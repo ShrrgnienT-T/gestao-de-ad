@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Ldap\Scopes\OnlyAghuseUsers;
 use Illuminate\Support\ServiceProvider;
+use App\Ldap\Scopes\OnlyAccountingUsers;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->register();
+
+        
     }
 }
