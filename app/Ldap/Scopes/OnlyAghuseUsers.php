@@ -18,9 +18,12 @@ class OnlyAghuseUsers implements Scope
      */
     public function apply(Builder $query, Model $model): void
     {
-        $query->in('OU=AGHUSE,OU=HOSPITAIS,DC=aghuse,DC=int');
 
+        $dn = 'OU=AGHUSE,OU=HOSPITAIS,DC=aghuse,DC=int';
+     
         // You can also make this "environment aware" if needed:
-        // $query->in(env('LDAP_USER_SCOPE'));
+        // $dn = env('LDAP_USER_SCOPE');
+
+        $query->in($dn);
     }
 }
