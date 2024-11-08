@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+// use App\Models\User;
 use Illuminate\Http\Request;
 use LdapRecord\Container;
+use LdapRecord\Models\ActiveDirectory\User;
 
 class AdUsersController extends Controller
 {
@@ -13,8 +14,18 @@ class AdUsersController extends Controller
      */
     public function index()
     {
-        $users = Container::getConnection()->query();
-        dd($users);
+        $users = Container::getConnection()
+            ->query()
+            ->whereContains('cn', 'Rodolpho schwingel')
+            ->get(); // Retorna uma coleção de objetos LdapRecord\Models\Model
+
+            dd($users);
+
+            // funcionando com esse escopo
+        // $users = User::OnlyAghuseUsers()->get();
+
+            dd($users);
+
         // $LoggedUser = auth()->user()->username;
         // // dd($LoggedUser);
 
@@ -40,6 +51,8 @@ class AdUsersController extends Controller
         // $dn = preg_replace($pattern, '', $string);
 
         // dd($dn);
+
+
 
     }
     /**

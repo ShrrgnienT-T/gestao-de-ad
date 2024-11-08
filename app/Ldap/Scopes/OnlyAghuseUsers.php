@@ -20,7 +20,7 @@ class OnlyAghuseUsers implements Scope
     {
 
         $dn = 'OU=AGHUSE,OU=HOSPITAIS,DC=aghuse,DC=int';
-     
+
         // You can also make this "environment aware" if needed:
         // $dn = env('LDAP_USER_SCOPE');
 
